@@ -3,6 +3,6 @@
 
 #include <stdint.h>
 
-typedef uint64_t user_id;
+typedef uint32_t user_id;
 
 #endif

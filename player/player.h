@@ -1,9 +1,9 @@
 #ifndef _PLAYER_PLAYER_H_
 #define _PLAYER_PLAYER_H_
 
-#include "../user/user.h"
-#include "../champion/champion.h"
-#include "../math/vector.h"
+#include "user/user.h"
+#include "champion/champion.h"
+#include "math/vector.h"
 
 typedef struct player_impl player;
 
