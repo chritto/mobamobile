@@ -17,3 +17,15 @@ game *game_create(player **players, int num_players)
 
     return g;
 }
+
+void game_set_input(game *g, user_input *input)
+{
+    debug_log("Setting the current user input");
+}
+
+// Iterates on the game state based on the time that has passed
+void game_update_state(game *g)
+{
+    debug_log("Iterating on the game state");
+}
+

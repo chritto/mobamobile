@@ -14,7 +14,7 @@
 
 void die();
 void render(game *g);
-user_input *get_input(void);
+user_input *collect_input(void);
 
 int main(int argc, const char *argv[])
 {
@@ -37,11 +37,12 @@ int main(int argc, const char *argv[])
 
     // Set up the client
     runnable_client client;
+    client.game = game;
     client.render = render;
-    client.get_input = get_input;
+    client.get_input = collect_input;
 
     // Pass the game into a run loop. Does not return.
-    runnable *r = run_begin(game, &client);
+    runnable *r = run_begin(&client);
     if (!r)
         die();
 
@@ -59,7 +60,7 @@ void render(game *g)
     debug_log("Rendering the game state");
 }
 
-user_input *get_input(void)
+user_input *collect_input(void)
 {
     debug_log("Collecting user input");
     return NULL;
