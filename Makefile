@@ -17,7 +17,7 @@ player.o:
 	gcc ${CFLAGS} -c player/player.c -o $(BUILD_DIR)/player.o -I.
 
 game.o:
-	gcc ${CGLAGS} -c game/game.c -o $(BUILD_DIR)/game.o -I.
+	gcc ${CFLAGS} -c game/game.c -o $(BUILD_DIR)/game.o -I.
 
 vector.o:
 	gcc ${CFLAGS} -c math/vector.c -o $(BUILD_DIR)/vector.o -I.

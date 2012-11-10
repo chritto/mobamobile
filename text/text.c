@@ -7,11 +7,14 @@
 #include "game/game.h"
 #include "math/vector.h"
 #include "util/log.h"
+#include "run/run.h"
 
 #define CHRIS_USER_ID 0
 #define JADE_USER_ID 1
 
 void die();
+void render(game *g);
+user_input *get_input(void);
 
 int main(int argc, const char *argv[])
 {
@@ -32,21 +35,32 @@ int main(int argc, const char *argv[])
     if (!game)
         die();
 
-    // Pass the game into a run loop
-    runnable *r = run_begin(game);
+    // Set up the client
+    runnable_client client;
+    client.render = render;
+    client.get_input = get_input;
+
+    // Pass the game into a run loop. Does not return.
+    runnable *r = run_begin(game, &client);
     if (!r)
         die();
-
-    // We collect user input here
-    while (true) {
-        sleep(1);
-    }
 
     return 0;
 }
 
 void die()
 {
-    debug_log("Catastrophic error. Quitting.");
+    debug_log("Unrecoverable error. Quitting.");
     exit(1);
+}
+
+void render(game *g)
+{
+    debug_log("Rendering the game state");
+}
+
+user_input *get_input(void)
+{
+    debug_log("Collecting user input");
+    return NULL;
 }

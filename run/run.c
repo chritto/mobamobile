@@ -13,7 +13,7 @@ struct runnable_impl
 
 void *run_begin_in_new_thread(void *p);
 
-runnable *run_begin(game *g)
+runnable *run_begin(game *g, runnable_client *client)
 {
     debug_log("Starting the main run loop");
 
@@ -27,6 +27,8 @@ runnable *run_begin(game *g)
         free(r);
         return NULL;
     } else {
+        // Let's wait for the thread to exit
+        pthread_join(r->run_thread, NULL);
         return r;
     }
 }
